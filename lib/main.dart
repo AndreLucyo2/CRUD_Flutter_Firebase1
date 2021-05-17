@@ -8,8 +8,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    //Firestore.instance.collection('todo').getDocuments().then((value) {});
-    //
+    Firestore.instance.collection('todo').getDocuments().then((value) {
+      value.documents.forEach((element) {
+        print(element.data);
+      });
+    });
+
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
