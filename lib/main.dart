@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -8,8 +9,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    Firestore.instance.collection('todo').getDocuments().then((value) {
-      value.documents.forEach((element) {
+    FirebaseFirestore.instance.collection('todo').get().then((value) {
+      value.docs.forEach((element) {
         print(element.data);
       });
     });
