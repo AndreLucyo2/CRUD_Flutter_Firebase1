@@ -23,8 +23,8 @@ if (flutterVersionName == null) {
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-//firebase: 
-apply plugin: 'com.google.gms.google-services'
+
+
 
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
@@ -42,6 +42,12 @@ android {
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+
+
+        //firebase : artigo: https://medium.com/flutterando/seu-primeiro-crud-com-flutter-e-firestore-parte-1-be3e9392a301
+        multiDexEnabled true
+
+
     }
 
     buildTypes {
@@ -59,8 +65,16 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
     //firebase: 
     implementation platform('com.google.firebase:firebase-bom:28.0.1')
+
     //firebase: 
     //implementation 'com.google.firebase:firebase-analytics' 
+    
+    //firebase : artigo: https://medium.com/flutterando/seu-primeiro-crud-com-flutter-e-firestore-parte-1-be3e9392a301
+    implementation 'com.android.support:multidex:1.0.3'
 }
+
+//firebase: 
+apply plugin: 'com.google.gms.google-services'
