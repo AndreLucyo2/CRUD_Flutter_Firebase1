@@ -33,12 +33,25 @@ class CrudFirebase {
     });
   }
 
+  Future<void> deleteColectionFirbaseTeste() async {
+    //obtem uma instancia do firebase:
+    final firestoreInstance = FirebaseFirestore.instance;
+    //Cria a coleção
+    firestoreInstance
+        .collection("users")
+        .doc('vCcDY1MHh0QPybSMUB0i')
+        .delete()
+        .then((value) {
+      print("Delete - success!");
+    });
+  }
+
   Future<void> updateColectionFirbaseTeste() async {
     //obtem uma instancia do firebase:
     final firestoreInstance = FirebaseFirestore.instance;
 
     //id que ser quer alterar:
-    final String idDocument = 'SbxHgPKlxnrjwpjmlqFR';
+    final String idDocument = 'gCKhSWYEmbdSFQfTCHEW';
 
     firestoreInstance
         .collection("users")
@@ -55,6 +68,60 @@ class CrudFirebase {
       },
     }).then((_) {
       print("UPDATE - success!");
+    });
+  }
+
+  /*
+    usamos o método set()para adicionar dados ao documento. 
+    Se um documento já existe e você deseja atualizá-lo, 
+    você pode usar o parâmetro nomeado opcional mergee defini-lo como true.
+    Desta forma, os dados existentes no documento não serão sobrescritos.
+  */
+  Future<void> updateSETComMergeTrueColectionFirbaseTeste() async {
+    //obtem uma instancia do firebase:
+    final firestoreInstance = FirebaseFirestore.instance;
+
+    //id que ser quer alterar:
+    final String idDocument = 'Pp7IJylj0MJOpkwB5HyB';
+
+    firestoreInstance
+        .collection("users")
+        .doc(
+          idDocument,
+        )
+        .set({
+      "name": "Lucas",
+      "genero": "Masculino",
+      "altura": "1.55",
+    }, SetOptions(merge: true)).then((_) {
+      print("SET - MERGE - success!");
+    });
+  }
+
+  Future<void> updateAddNovoCampoNaColectionFirbaseTeste() async {
+    //obtem uma instancia do firebase:
+    final firestoreInstance = FirebaseFirestore.instance;
+
+    //id que ser quer alterar:
+    final String idDocument = 'mN3zBNauUWhhtxetTTm3';
+
+    firestoreInstance
+        .collection("users")
+        .doc(
+          idDocument,
+        )
+        .update({
+      "name": "Andre",
+      "email": "ALSUPDATE@example.com",
+      "age": 555,
+      "address": {
+        "street": "Av. Parigot",
+        "city": "Toledo",
+        "CEP": "99150-000",
+      },
+      "genero": "Masculino",
+    }).then((_) {
+      print("UPDATE add novo campo - success!");
     });
   }
 

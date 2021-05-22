@@ -43,6 +43,9 @@ class _MyHomePageState extends State<MyHomePage> {
       idColecao = crudF.idColection;
       crudF.updateColectionFirbaseTeste();
       crudF.getColectionFirbaseTeste();
+      crudF.updateAddNovoCampoNaColectionFirbaseTeste();
+      crudF.updateSETComMergeTrueColectionFirbaseTeste();
+      crudF.deleteColectionFirbaseTeste();
       _counter++;
     });
   }
