@@ -33,19 +33,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
-  final CrudFirebase crudF = CrudFirebase();
-  String idColecao = '';
-
   void _incrementCounter() {
     setState(() {
-      //ESTUDO CRUD FIREBASE
-      //crudF.addColectionFirbaseTeste();
-      idColecao = crudF.idColection;
-      crudF.updateColectionFirbaseTeste();
-      crudF.getColectionFirbaseTeste();
-      crudF.updateAddNovoCampoNaColectionFirbaseTeste();
-      crudF.updateSETComMergeTrueColectionFirbaseTeste();
-      crudF.deleteColectionFirbaseTeste();
       _counter++;
     });
   }
@@ -61,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'ID da coleção geradada no firebase: $idColecao',
+              'ID da coleção geradada no firebase:',
             ),
             Text(
               '$_counter',

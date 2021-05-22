@@ -5,7 +5,12 @@ Seguindo instruções so artigos:
 
   https://petercoding.com/firebase/2020/04/04/using-cloud-firestore-in-flutter/
 
-  https://medium.com/flutterando/seu-primeiro-crud-com-flutter-e-firestore-parte-1-be3e9392a301   
+## Tutorial Youtub:   
 
-sando o Slidy : https://pub.dev/packages/slidy#-installing-tab-  
+  
 
+![image-20210522172252531](image/README/image-20210522172252531.png)
+
+
+
+![image-20210522172130566](image/README/image-20210522172130566.png)
