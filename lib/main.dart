@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:crud_flutter_firebase1/crudFirabase.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -39,80 +40,19 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
-  String _idColection = "";
+  final CrudFirebase crudF = CrudFirebase();
+  String idColecao = '';
 
   void _incrementCounter() {
     setState(() {
-      //Metodo para AddColeção no firebase:
-      //_addColectionFirbaseTeste();
-      _updateColectionFirbaseTeste();
-      _getColectionFirbaseTeste();
+      //ESTUDO CRUD FIREBASE
+      crudF.addColectionFirbaseTeste();
+      idColecao = crudF.idColection;
+      crudF.updateColectionFirbaseTeste();
+      crudF.getColectionFirbaseTeste();
       _counter++;
     });
   }
-
-  //========================================================================================
-  // Estudo firebase:
-  //========================================================================================
-  //referencia : https://petercoding.com/firebase/2020/04/04/using-cloud-firestore-in-flutter/
-  void _addColectionFirbaseTeste() {
-    //obtem uma instancia do firebase:
-    final firestoreInstance = FirebaseFirestore.instance;
-    //Cria a coleção
-    firestoreInstance.collection("users").add({
-      "name": "john",
-      "age": 50,
-      "email": "example@example.com",
-      "address": {"street": "street 24", "city": "new york"}
-    }).then((value) {
-      print(value.id);
-
-      print("ADD - success!");
-
-      //pego o id da coleção:
-      _idColection = value.id;
-    });
-  }
-
-  void _updateColectionFirbaseTeste() {
-    //obtem uma instancia do firebase:
-    final firestoreInstance = FirebaseFirestore.instance;
-
-    //id que ser quer alterar:
-    final String idDocument = 'YnTVGgiN3XmDfFB2Z3T6';
-
-    firestoreInstance
-        .collection("users")
-        .doc(
-          idDocument,
-        )
-        .update({
-      "name": "Andre",
-      "email": "ALSUPDATE@example.com",
-      "age": 555,
-      "address": {
-        "street": "Av. Parigot",
-        "city": "Toledo",
-      },
-    }).then((_) {
-      print("UPDATE - success!");
-    });
-  }
-
-  void _getColectionFirbaseTeste() {
-    //obtem uma instancia do firebase:
-    final firestoreInstance = FirebaseFirestore.instance;
-    //Faz uma consulta:
-    firestoreInstance.collection("todo").get().then((value) {
-      value.docs.forEach((element) {
-        print(element.data());
-      });
-
-      print("GET - success!");
-    });
-  }
-
-  //========================================================================================
 
   @override
   Widget build(BuildContext context) {
@@ -125,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'ID da coleção geradada no firebase: $_idColection',
+              'ID da coleção geradada no firebase: $idColecao',
             ),
             Text(
               '$_counter',
