@@ -1,15 +1,9 @@
 import 'package:crud_flutter_firebase1/crudFirabase.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
-  //========================================================================================
-  //INICIANDO O FIREBASE:
-  //ref: https://stackoverflow.com/questions/63492211/no-firebase-app-default-has-been-created-call-firebase-initializeapp-in
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  //========================================================================================
-
+  //Inicia forebase
+  CrudFirebase.inicializeFirabase();
   runApp(MyApp());
 }
 
