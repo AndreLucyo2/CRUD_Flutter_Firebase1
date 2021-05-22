@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void _incrementCounter() {
     setState(() {
       //ESTUDO CRUD FIREBASE
-      crudF.addColectionFirbaseTeste();
+      //crudF.addColectionFirbaseTeste();
       idColecao = crudF.idColection;
       crudF.updateColectionFirbaseTeste();
       crudF.getColectionFirbaseTeste();
