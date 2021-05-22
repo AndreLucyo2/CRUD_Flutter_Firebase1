@@ -44,7 +44,9 @@ class _MyHomePageState extends State<MyHomePage> {
   void _incrementCounter() {
     setState(() {
       //Metodo para AddColeção no firebase:
-      _addColectionFirbaseTeste();
+      //_addColectionFirbaseTeste();
+      _updateColectionFirbaseTeste();
+      _getColectionFirbaseTeste();
       _counter++;
     });
   }
@@ -65,8 +67,48 @@ class _MyHomePageState extends State<MyHomePage> {
     }).then((value) {
       print(value.id);
 
+      print("ADD - success!");
+
       //pego o id da coleção:
       _idColection = value.id;
+    });
+  }
+
+  void _updateColectionFirbaseTeste() {
+    //obtem uma instancia do firebase:
+    final firestoreInstance = FirebaseFirestore.instance;
+
+    //id que ser quer alterar:
+    final String idDocument = 'YnTVGgiN3XmDfFB2Z3T6';
+
+    firestoreInstance
+        .collection("users")
+        .doc(
+          idDocument,
+        )
+        .update({
+      "name": "Andre",
+      "email": "ALSUPDATE@example.com",
+      "age": 555,
+      "address": {
+        "street": "Av. Parigot",
+        "city": "Toledo",
+      },
+    }).then((_) {
+      print("UPDATE - success!");
+    });
+  }
+
+  void _getColectionFirbaseTeste() {
+    //obtem uma instancia do firebase:
+    final firestoreInstance = FirebaseFirestore.instance;
+    //Faz uma consulta:
+    firestoreInstance.collection("todo").get().then((value) {
+      value.docs.forEach((element) {
+        print(element.data());
+      });
+
+      print("GET - success!");
     });
   }
 
